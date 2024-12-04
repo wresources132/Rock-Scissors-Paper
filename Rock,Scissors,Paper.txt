@@ -1,0 +1,65 @@
+﻿
+
+import random
+choice_list = ["Rock", "Paper", "Scissors"]
+user_score = 0
+machine_score = 0
+
+
+
+
+def game():
+    won = False
+    lost = False
+    while not won and not lost:
+        user = input("Enter your choice from Rock, Paper or Scissors: ")
+        user_me = user.lower()
+        machine = random.choice(choice_list)
+        machine_choice = machine.lower()
+        user_score = 0
+        machine_score = 0
+        
+        if machine_choice == user_me:
+            print("Draw, start again!")
+        elif machine_choice == "rock" and user_me == "paper":
+             user_score =+1
+             won = True
+            
+        elif machine_choice == "rock" and user_me == "scissors":
+             machine_score =+1
+             lost = True
+        elif machine_choice == "paper" and user_me == "rock":
+             machine_score =+1
+             lost = True
+        elif machine_choice == "paper" and user_me == "scissors":
+             user_score =+1
+             won = True
+        elif machine_choice == "scissors" and user_me == "rock":
+             user_score =+1
+             won = True
+        elif machine_choice == "scissors" and user_me == "paper":
+             machine_score =+1
+             lost = True
+        elif user_me == "scissors" or "paper" or "rock":
+            print("Wrong choice, try again...")
+    if won:
+        won = False
+        print("You have "+str(user_score)+" wins") 
+        print("The machine has "+str(machine_score)+" wins") 
+        print("Congrats you won, the PC chose " + machine + "!")
+        
+    if lost:
+        lost = False
+        print("You have "+str(user_score)+" wins") 
+        print("The computer has "+str(machine_score)+" wins") 
+        print("You lost, the PC chose " + machine + "!")
+        
+play_again = "yes"
+while play_again.lower() == "yes":
+    game()
+    play_again = input("Would u like to play again? ")
+if play_again.lower() != "yes":
+    
+    
+    print("Goodbye!")
+    
